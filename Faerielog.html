@@ -91,6 +91,36 @@
   margin-left: 5px;
   vertical-align: middle;
 }
+
+    .tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 140px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* arriba del ícono */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+}
+
+.tooltip:active .tooltip-text,
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
   </style>
 </head>
 <body>
@@ -101,7 +131,9 @@
       <img src="https://img.ilustrart.art/Faerielog/8c987554-9a9a-4835-bbf5-7f7ecaec2eb1_37929726-e065-4663-9f3a-86e3ef0b6596.jpg" alt="Perfil">
       <div class="profile-info">
         <h2>
-          <h2>Faerielog<span class="verified-icon"></span></h2>
+         <h2>Faerielog <span class="tooltip verified-icon">
+  <span class="tooltip-text">Usuario verificado</span>
+         </span></h2>
         </h2>
         <p>20<br>🇲🇽</p>
       </div>
