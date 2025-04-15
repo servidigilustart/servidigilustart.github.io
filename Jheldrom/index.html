@@ -1,0 +1,157 @@
+
+<!DOCTYPE html><html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://img.ilustrart.art/Jheldrom%20Dibujos/Jheldrom%20Profile.jpeg" type="image/x-icon">
+  <title>Jheldrom Dibujos</title>
+  <link rel="stylesheet" 
+         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+         crossorigin="anonymous" referrerpolicy="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://img.ilustrart.art https://ilustrart.art https://ilustrart.b-cdn.net; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src https://cdnjs.cloudflare.com">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff00;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .card {
+      background-color:  white;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 360px;
+    }
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 10px;
+    }
+    .profile img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+    .profile-info h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+    .profile-info p {
+      margin: 4px 0 0 0;
+      font-size: 14px;
+      color: #555;
+    }
+    hr {
+      margin: 20px 0;
+      border: none;
+      border-top: 1px solid #eee;
+    }
+  
+    .buttons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      background: #f3f3f3;
+      padding: 12px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #000;
+      transition: background 0.3s;
+    }
+    .buttons a:hover {
+      background: #e0e0e0;
+    }
+    .buttons i {
+      font-size: 18px;
+    }
+
+    .verified-icon svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.2s;
+    }
+    
+    .verified-icon {
+     position: relative;
+     display: inline-flex;
+     margin-left: 5px;
+     cursor: pointer;
+    }
+
+
+    .verified-icon:hover svg {
+      transform: scale(1.15);
+    }
+    
+    .verified-icon .tooltip-text {
+      visibility: hidden;
+      width: 140px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 6px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 12px;
+      pointer-events: none;
+    }
+    
+    .verified-icon:hover .tooltip-text,
+    .verified-icon:focus .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+
+
+
+  </style>
+</head>
+<body>
+   
+ 
+  <div class="card">
+    <div class="profile">
+      <img src="https://img.ilustrart.art/Jheldrom%20Dibujos/Jheldrom%20Profile.jpeg" alt="Foto de Perfil de Jheldrom">
+      <div class="profile-info">
+        <h2>Jheldrom Dibujos
+          <span class="verified-icon" tabindex="0" role="img" aria-label="Usuario verificado">
+            <svg viewBox="0 0 512 512" width="18" height="18" aria-hidden="true">
+              <path fill="#ff4a3d" d="M256 472.2L176.9 512l-41.7-81.1-86.3-16.7 11.6-91.4L0 256l60.5-66.8-11.6-91.4 86.3-16.7L176.9 0 256 39.8 335.1 0l41.7 81.1 86.3 16.7-11.6 91.4L512 256l-60.5 66.8 11.6 91.4-86.3 16.7L335.1 512z"/>
+              <path fill="#fff" d="m216.5 281.7-40.8-40.8-36 36 40.8 40.8-0.1 0.1 36 36 0.1-0.1 0.1 0.1 36-36-0.1-0.1 128.5-128.5-36-36z"/>
+            </svg>
+            <span class="tooltip-text">Verificado</span>
+          </span>
+        </h2>
+        <p>Creador de cómics Independientes</p>
+      </div>
+    </div>
+    <hr>
+
+
+
+<div class="buttons">
+  <a href="https://youtube.com/@jheldromdibujos" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i>You Tube</a>
+  <a href="https://www.tiktok.com/@jheldrompatlan" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i>Tik Tok</a>
+  <a href="#"  rel="noopener noreferrer"><i class="fas fa-book"></i>Mis Comics</a>
+</div>
+
+  </div>
+  
+</body>
+</html>
