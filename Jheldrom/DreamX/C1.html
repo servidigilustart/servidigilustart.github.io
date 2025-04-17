@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dream X - Capítulo 1</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+
+    .viewer {
+      width: 100vw;
+      height: 100vh;
+      overflow: auto;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+    }
+
+    #comicPage {
+      display: block;
+      margin: 0 auto;
+      transform-origin: top center;
+      user-select: none;
+      transition: transform 0.2s ease;
+    }
+
+    .controls {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      z-index: 10;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background: #222;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      font-size: 14px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #444;
+    }
+
+    .zoom-control {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: #111;
+      padding: 6px 10px;
+      border-radius: 5px;
+    }
+
+    input[type="number"] {
+      width: 60px;
+      text-align: center;
+      border-radius: 3px;
+      border: none;
+      padding: 4px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="viewer" id="viewer">
+    <img id="comicPage" src="" alt="Cargando cómic...">
+  </div>
+
+  <div class="controls">
+    <button onclick="prevPage()">Anterior</button>
+    <button onclick="toggleFullscreen()">Pantalla Completa</button>
+    <button onclick="nextPage()">Siguiente</button>
+    <div class="zoom-control">
+      <button onclick="changeZoom(-0.1)">-</button>
+      <input type="number" id="zoomValue" step="0.1" min="0.1" max="1" value="1" onchange="setZoomFromInput()">
+      <button onclick="changeZoom(0.1)">+</button>
+    </div>
+  </div>
+
+  <script>
+    const baseUrl = 'https://img.ilustrart.art/Jheldrom%20Dibujos/Comics/Dreamx/C1/';
+    const filePrefix = 'DREAM X ';
+    const totalPages = 12;
+    const includeCover = true;
+  
+    let currentPage = 0;
+    let zoomLevel = 1;
+    let baseZoom = 1;
+    let userModifiedZoom = false;
+  
+    const img = document.getElementById('comicPage');
+    const viewer = document.getElementById('viewer');
+    const zoomInput = document.getElementById('zoomValue');
+  
+    function getPageUrl(index) {
+      if (includeCover && index === 0) {
+        return baseUrl + 'DREAM X PORTADA.jpg';
+      } else {
+        const num = includeCover ? index : index + 1;
+        return `${baseUrl}${filePrefix}${num}.jpg`;
+      }
+    }
+  
+    function showPage(index) {
+      if (index < 0 || index > totalPages) return;
+      currentPage = index;
+      img.src = getPageUrl(index);
+      viewer.scrollTop = 0;
+    }
+  
+    function nextPage() {
+      if (currentPage < totalPages) showPage(currentPage + 1);
+    }
+  
+    function prevPage() {
+      if (currentPage > 0) showPage(currentPage - 1);
+    }
+  
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  
+    function applyZoom() {
+      img.style.transform = `scale(${zoomLevel})`;
+      zoomInput.value = zoomLevel.toFixed(1);
+    }
+  
+    function changeZoom(amount) {
+      zoomLevel = Math.min(Math.max(zoomLevel + amount, baseZoom), 1);
+      userModifiedZoom = true;
+      applyZoom();
+    }
+  
+    function setZoomFromInput() {
+      let val = parseFloat(zoomInput.value);
+      if (!isNaN(val)) {
+        zoomLevel = Math.min(Math.max(val, baseZoom), 1);
+        userModifiedZoom = true;
+        applyZoom();
+      }
+    }
+  
+    img.addEventListener('load', () => {
+      const availableHeight = window.innerHeight;
+      const scaleToFit = availableHeight / img.naturalHeight;
+      baseZoom = Math.min(scaleToFit, 1);
+  
+      if (!userModifiedZoom) {
+        zoomLevel = baseZoom;
+      }
+  
+      applyZoom();
+      viewer.scrollTop = 0;
+    });
+  
+    window.onload = () => showPage(currentPage);
+  </script>
+</body>
+</html>

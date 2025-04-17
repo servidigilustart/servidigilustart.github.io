@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jheldrom - Cómics</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: #121212;
+      color: #fff;
+    }
+
+    header, footer {
+      background: #1f1f1f;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 25%;
+      background: #1a1a1a;
+      padding: 15px;
+      border-right: 1px solid #333;
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      font-size: 18px;
+      margin-top: 0;
+    }
+
+    .comic-title {
+      cursor: pointer;
+      padding: 10px;
+      border-bottom: 1px solid #333;
+    }
+
+    .comic-title:hover {
+      background: #2a2a2a;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .cover {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border: 2px solid #444;
+      margin-bottom: 15px;
+    }
+
+    .chapter-link {
+      color: #7cf;
+      text-decoration: none;
+      display: block;
+      margin-top: 5px;
+    }
+
+    .chapter-link:hover {
+      text-decoration: underline;
+    }
+
+    .info p {
+      margin: 6px 0;
+    }
+
+    .profile {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #555;
+  object-fit: cover;
+}
+
+.artist-name {
+  margin-top: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #ccc;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Jheldrom - Biblioteca de Cómics</h1>
+  </header>
+
+  <div class="main">
+    <div class="sidebar">
+        <div class="profile">
+            <img src="https://img.ilustrart.art/Jheldrom%20Dibujos/Jheldrom%20Profile.jpeg" alt="Perfil del artista" class="profile-pic">
+            <p class="artist-name">Jheldrom</p>
+          </div>
+      <h2>Cómics disponibles</h2>
+      <div class="comic-title" onclick="loadComic('dreamx')">Dream X</div>
+      <!-- Más títulos aquí -->
+    </div>
+
+    <div class="content" id="comicInfo">
+      <p>Selecciona un cómic de la lista para ver su información.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 EDAEM COMICS. Todos los derechos reservados. | <a href="#" style="color:#7cf;">Política de privacidad</a></p>
+  </footer>
+
+  <script>
+    const comics = {
+      dreamx: {
+        title: 'Dream X',
+        author: 'Jheldrom Patlan',
+        date: '2025-04-16',
+        description: 'Eduardo Patlan "PINZAMAGICA" Vargas.',
+        cover: 'https://img.ilustrart.art/Jheldrom%20Dibujos/Comics/Dreamx/C1/DREAM%20X%20PORTADA.jpg',
+        chapters: [
+          { title: 'Capítulo 1', link: 'DreamX/C1.html' },
+                         <!-- Más Capítulos aquí -->
+        ]
+      },
+      otro: {
+        title: 'Otro Cómic',
+        author: 'Ilustrador Anónimo',
+        date: '2025-01-01',
+        description: 'Descripción del otro cómic.',
+        cover: 'https://via.placeholder.com/300x400.png?text=Portada+Otro+Cómic',
+        chapters: [
+          { title: 'Capítulo 1', link: '#' },
+        ]
+      }
+    };
+
+    function loadComic(key) {
+      const comic = comics[key];
+      const container = document.getElementById('comicInfo');
+      container.innerHTML = `
+        <h2>${comic.title}</h2>
+        <img class="cover" src="${comic.cover}" alt="Portada de ${comic.title}">
+        <div class="info">
+          <p><strong>Autor:</strong> ${comic.author}</p>
+          <p><strong>Fecha de inicio:</strong> ${comic.date}</p>
+          <p><strong>Guion y Diseño:</strong> ${comic.description}</p>
+          <p><strong>Capítulos disponibles:</strong></p>
+          ${comic.chapters.map(ch => `<a class="chapter-link" href="${ch.link}">${ch.title}</a>`).join('')}
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
